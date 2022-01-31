@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<h2>Calculate wavelength for seismic wavelet</h2>
+<p>This program will estimate the wavelength for frequency-velocity pairs.</p>
+
+<!-- img src="schematic.png" alt="Schematic" width="500" height="600" -->
+<div class="w3-container w3-teal">
+    <h2>Calculate wavelength for seismic wavelet</h2>
+</div>
+
+<form class="w3-container">
+    <label class="w3-text-teal">Velocity (m/s)</label>
+    <input class="w3-input w3-vorder w3-light-grey" type="number" name="name" id="Vel" value=1500>
+
+    <label class="w3-text-teal">Frequency (Hz)</label>
+    <input class="w3-input w3-vorder w3-light-grey" type="number" name="name" id="Freq" value=500>   
+
+    <button class="w3-btn w3-blue-grey" onclick="myFunction()">Calculate</button>
+</form>
+
+<div class="w3-panel w3-teal">
+    <h3>Wavelength (m)</h3>
+    <p id="Lam"></p>
+</div>
+
+<script>
+function myFunction() {
+    event.preventDefault();
+    var vel = document.getElementById("Vel").value;
+    var freq = document.getElementById("Freq").value;
+
+    var wl = (parseFloat(vel)) / (parseFloat(freq))
+    document.getElementById("Lam").innerHTML = wl.toFixed(2);
+}
+</script>
+
+</body>
+</html>

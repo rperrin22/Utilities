@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Calculate acquisition parameters for refraction surveys</h2>
+<p>This program will calculate what the expected crossover offset is for a given set of velocities and the expected depth to the interface.  This is described in the image below.  The three input parameters are velocity of the overburden, velocity of the bedrock, and depth to the interface.  The outputs are crossover distance, maximum geophone spacing, and maximum shot spacing.</p>
+
+<!-- img src="schematic.png" alt="Schematic" width="500" height="600" -->
+
+<p>Overburden Velocity (m/s)</p>
+<input type="number" name="name" id="vel1" value=500 />
+<p>Bedrock Velocity (m/s)</p>
+<input type="number" name="name" id="vel2" value=1500 />
+<p>Bedrock Depth (m)</p>
+<input type="number" name="name" id="depth" value=5 />
+
+<button onclick="myFunction()">Calculate</button>
+
+<p>Crossover distance (m)</p>
+<p id="xc"></p>
+<p>Maximum geophone spacing (m)</p>
+<p id="phone"></p>
+<p>Maximum shot spacing (m)</p>
+<p id="shot"></p>
+
+<script>
+function myFunction() {
+var vel1 = document.getElementById("vel1").value;
+var vel2 = document.getElementById("vel2").value;
+var depth = document.getElementById("depth").value;
+
+var temp_val = (parseFloat(vel2) + parseFloat(vel1)) / (parseFloat(vel2) - parseFloat(vel1))
+var xc = 2*depth*Math.sqrt(temp_val);
+var phone = xc/4;
+var shot = xc*2;
+document.getElementById("xc").innerHTML = xc.toFixed(2);
+document.getElementById("phone").innerHTML = phone.toFixed(2);
+document.getElementById("shot").innerHTML = shot.toFixed(2);
+}
+</script>
+
+</body>
+</html>
